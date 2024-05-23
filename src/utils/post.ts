@@ -2,7 +2,7 @@ import { getCollection } from "astro:content";
 import { PAGE_SIZE } from "src/consts";
 
 export async function getAllPost() {
-  return (await getCollection("blog")).sort(
+  return (await getCollection("blog", (post) => !post.data.draft)).sort(
     (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
   );
 }
