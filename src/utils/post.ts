@@ -54,7 +54,7 @@ export async function getAllCategory(): Promise<string[]> {
 export async function getTagPosts(tag: string) {
   const posts = (
     await getCollection("blog", (p) => {
-      return p.data.tags?.includes(tag);
+      return p.data.tags?.includes(tag) && !p.data.draft;
     })
   ).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
@@ -64,7 +64,7 @@ export async function getTagPosts(tag: string) {
 export async function getCategoryPosts(category: string) {
   const posts = (
     await getCollection("blog", (p) => {
-      return p.data.categories?.includes(category);
+      return p.data.categories?.includes(category) && !p.data.draft;
     })
   ).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
