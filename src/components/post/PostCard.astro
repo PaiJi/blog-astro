@@ -1,0 +1,58 @@
+---
+interface Props {
+  post: CollectionEntry<"blog">;
+}
+import { type CollectionEntry } from "astro:content";
+import clsx from "clsx";
+import FormattedDate from "../FormattedDate.astro";
+import { Image } from "astro:assets";
+const { post } = Astro.props;
+const { permalink, photos, date, title, categories } = post.data;
+const isCoverExist = photos?.[0];
+---
+
+<div class={clsx("md:flex w-full")}>
+  {
+    isCoverExist && (
+      <a href={`/${permalink}`} class={clsx("md:basis-2/4")}>
+        {
+          <Image
+            alt="hero image"
+            inferSize={true}
+            class="w-full object-fill object-center shadow-md transition hover:scale-95 rounded-xl"
+            src={photos?.[0]}
+          />
+        }
+      </a>
+    )
+  }
+
+  <div
+    class={clsx(
+      "w-full flex flex-col",
+      isCoverExist && "mt-6 md:mt-0 md:ml-6 md:basis-2/4"
+    )}
+  >
+    <div class="flex text-sm mb-1 flex flex-col">
+      <span class="text-text-dark-light">
+        <FormattedDate date={post.data.date} />
+        <div class="inline-flex gap-1">
+          {categories?.map((c) => <a href={`/categories/${c}`}>{c}</a>)}
+        </div>
+      </span>
+    </div>
+
+    <a href={`/${permalink}`} class="group w-fit">
+      <h3
+        class="inline text-xl md:text-2xl font-bold text-slate-600 group-hover:text-primary-blue"
+      >
+        {title}
+      </h3>
+    </a>
+
+    <div class="text-slate-500"></div>
+    <!-- <div class="flex justify-end mt-4 flex-grow items-end">
+      <a class="text-primary-blue" href={post.path}>{`继续阅读`}</a>
+    </div> -->
+  </div>
+</div>

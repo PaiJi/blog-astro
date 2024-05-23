@@ -1,0 +1,35 @@
+---
+import { FaAngleDoubleRight } from "react-icons/fa";
+import clsx from "clsx";
+
+interface Props {
+  type: "next" | "prev";
+  buttonLabel: string;
+  url: string | undefined;
+}
+
+const { buttonLabel, url, type } = Astro.props;
+---
+
+<div class="flex items-center justify-center my-8">
+  <a
+    href={url}
+    class={clsx(
+      "mt-8 text-3xl md:text-8xl font-bold text-primary-blue-light flex items-center",
+      !url && "cursor-not-allowed",
+      url && "transition group hover:text-primary-blue"
+    )}
+  >
+    {
+      type === "prev" && (
+        <FaAngleDoubleRight className="relative rotate-180 inline text-3xl md:text-8xl group-hover:animate-[keep-distance_1s_ease-in-out_alternate_infinite]" />
+      )
+    }
+    <span class="inline-block">{buttonLabel || "MORE"}</span>
+    {
+      type === "next" && (
+        <FaAngleDoubleRight className="relative inline text-3xl md:text-8xl group-hover:animate-[keep-distance_1s_ease-in-out_alternate_infinite]" />
+      )
+    }
+  </a>
+</div>

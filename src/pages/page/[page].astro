@@ -1,0 +1,45 @@
+---
+import Container from "@components/Container.astro";
+import Pagination from "@components/post/Pagination.astro";
+import PostList from "@components/post/PostList.astro";
+import Layout from "@layouts/Layout.astro";
+import { getTargetPage } from "@utils/post";
+import type { PaginateFunction } from "astro";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths({
+  paginate,
+}: {
+  paginate: PaginateFunction;
+}) {
+  const posts = await getCollection("blog");
+  return paginate(
+    posts.map((post) => ({
+      params: { slug: post.data.permalink },
+      // props: post,
+    })),
+    { pageSize: 10 }
+  );
+}
+// 所有分页数据都在 "page" 参数中传递
+const { page } = Astro.props;
+const posts = await getTargetPage(page.currentPage);
+---
+
+<!-- 显示当前页面。也可以使用 Astro.params.page！-->
+<Layout>
+  <section class="mx-4 md:mx-auto">
+    <Container>
+      <h1 class="text-slate-500 text-center text-4xl font-bold mt-6 mb-12">
+        PAGE {page.currentPage}
+      </h1>
+
+      <PostList posts={posts} />
+
+      <div class="flex justify-between">
+        <Pagination type="prev" buttonLabel="PREV" url={page.url.prev} />
+        <Pagination type="next" buttonLabel="NEXT" url={page.url.next} />
+      </div>
+    </Container>
+  </section>
+</Layout>

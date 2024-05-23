@@ -1,0 +1,58 @@
+---
+import HeaderLink from "./HeaderLink.astro";
+import { SITE_TITLE } from "../consts";
+import { Image } from "astro:assets";
+
+const NavConfig = [
+  {
+    name: "博客首页",
+    href: "/",
+  },
+  {
+    name: "JiPai.Moe",
+    href: "https://www.jipai.moe",
+  },
+  {
+    name: "友链",
+    href: "https://www.jipai.moe/friends",
+  },
+  {
+    name: "关于我",
+    href: "https://www.jipai.moe/about",
+  },
+];
+---
+
+<header
+  class="bg-white shadow-sm max-w-3xl rounded-full my-8 flex h-[52px] mx-4 md:mx-auto"
+>
+  <div class="flex-shrink-0 mr-2">
+    <Image
+      src="https://avatars.githubusercontent.com/u/3956400?v=4"
+      alt="avatar"
+      width={52}
+      height={52}
+      class="rounded-full overflow-hidden"
+    />
+  </div>
+  <div class="flex items-center space-between py-3">
+    <div class="flex items-center">
+      <HeaderLink href="/" class="font-bold text-xl text-primary-blue">
+        JiPa<span class="text-red-400">i</span> Store
+      </HeaderLink>
+
+      <nav class="hidden sm:flex ml-4 items-center gap-4">
+        {
+          NavConfig.map((nav) => (
+            <a
+              class="text-slate-600 text-base inline-block align-baseline hover:text-primary-blue"
+              href={nav.href}
+            >
+              {nav.name}
+            </a>
+          ))
+        }
+      </nav>
+    </div>
+  </div>
+</header>

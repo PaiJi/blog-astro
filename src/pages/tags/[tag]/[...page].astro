@@ -1,0 +1,59 @@
+---
+import Container from "@components/Container.astro";
+import Pagination from "@components/post/Pagination.astro";
+import PostList from "@components/post/PostList.astro";
+import Layout from "@layouts/Layout.astro";
+import { getAllTag, getTagPosts } from "@utils/post";
+import type { PaginateFunction } from "astro";
+import { PAGE_SIZE } from "src/consts";
+
+export async function getStaticPaths({
+  paginate,
+}: {
+  paginate: PaginateFunction;
+}) {
+  const allTags = await getAllTag();
+
+  const flatPathsPromise = allTags.map(async (tag) => {
+    const filteredPosts = await getTagPosts(tag);
+    return paginate(filteredPosts, {
+      params: { tag },
+      props: { posts: filteredPosts },
+      pageSize: PAGE_SIZE,
+    });
+  });
+
+  const flatPaths = (await Promise.all(flatPathsPromise)).flatMap(
+    (item) => item
+  );
+
+  return flatPaths;
+}
+const { page } = Astro.props;
+const params = Astro.params;
+---
+
+<Layout>
+  <section class="mx-4 md:mx-auto">
+    <Container>
+      <h1 class="text-slate-500 text-center text-4xl font-bold mt-6 mb-12">
+        Tag: {params.tag}
+      </h1>
+
+      <PostList posts={page.data} />
+
+      <div class="flex justify-between">
+        {
+          page.url.prev && (
+            <Pagination type="prev" buttonLabel="PREV" url={page.url.prev} />
+          )
+        }
+        {
+          page.url.next && (
+            <Pagination type="next" buttonLabel="NEXT" url={page.url.next} />
+          )
+        }
+      </div>
+    </Container>
+  </section>
+</Layout>

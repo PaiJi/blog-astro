@@ -1,0 +1,32 @@
+---
+import Container from "@components/Container.astro";
+import Pagination from "@components/post/Pagination.astro";
+import More from "@components/post/Pagination.astro";
+import PostList from "@components/post/PostList.astro";
+import SpringText from "@components/SpringText";
+import Layout from "@layouts/Layout.astro";
+import { getFirstPage } from "@utils/post";
+
+const posts = await getFirstPage();
+---
+
+<Layout>
+  <Container className="bg-primary-blue-light rounded-3xl my-6 p-6 md:p-8 mx-4">
+    <h3 class="text-3xl md:text-6xl">👋</h3>
+    <h3 class="text-3xl md:text-6xl font-bold text-slate-700">
+      <span class="text-xl md:text-4xl font-normal">我是</span>
+      <SpringText />
+    </h3>
+    <h3 class="mt-1 md:mt-4 text-xl md:text-2xl text-slate-600">
+      {`一名兴趣使然的全栈开发者`}
+    </h3>
+  </Container>
+
+  <section class="mx-4 md:mx-auto">
+    <Container>
+      <PostList posts={posts} />
+
+      <Pagination type="next" buttonLabel="MORE" url="/page/2" />
+    </Container>
+  </section>
+</Layout>

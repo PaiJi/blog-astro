@@ -1,0 +1,24 @@
+---
+import Container from "@components/Container.astro";
+
+const today = new Date();
+---
+
+<footer class="">
+  <Container className="py-8 text-center text-base md:text-xl items-center">
+    &copy; 2017-{today.getFullYear()} 「JiPai·Store」製作委員会
+    <div class="text-sm md:text-base">
+      <p>
+        Make By <span>JiPa<span class="text-red-400">i</span></span> with 🍜
+      </p>
+      <p>Powered By Astro & React</p>
+    </div>
+  </Container>
+</footer>
+
+<style>
+  footer {
+    background: linear-gradient(var(--gray-gradient)) no-repeat;
+    color: rgb(var(--gray));
+  }
+</style>

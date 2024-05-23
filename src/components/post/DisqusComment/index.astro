@@ -1,0 +1,31 @@
+---
+import "disqusjs/dist/react/styles/disqusjs.css";
+---
+
+<div id="disqusjs"></div>
+
+<script>
+  import DisqusJS from "disqusjs/es2015";
+
+  const disqusjs = new DisqusJS({
+    shortname: "paiji",
+    siteName: "JiPai Store",
+    identifier: "",
+    url: "",
+    title: "",
+    api: "https://disqus.skk.moe/disqus/",
+    apikey: "XmzmGKEBpV11VlOd0K8QJnDOIsJRsW6y9vf6DO6Nw2MkWXkSGvqYSReey9btEU7U",
+    admin: "jipai",
+    adminLabel: "MOD",
+  });
+
+  function initDisqusJS() {
+    const targetEle = document.getElementById("disqusjs");
+    if (targetEle) {
+      disqusjs.render(targetEle);
+    } else {
+      console.warn("Disqus init failed.");
+    }
+  }
+  document.addEventListener("astro:page-load", initDisqusJS);
+</script>

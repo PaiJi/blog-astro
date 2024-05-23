@@ -1,0 +1,41 @@
+---
+import type { CollectionEntry } from "astro:content";
+import FormattedDate from "../components/FormattedDate.astro";
+import Layout from "./Layout.astro";
+import Container from "@components/Container.astro";
+import Prose from "@components/post/Prose.astro";
+import DisqusComment from "@components/post/DisqusComment/index.astro";
+
+type Props = CollectionEntry<"blog">["data"];
+
+const { title, description, date, updatedDate, heroImage } = Astro.props;
+---
+
+<Layout title={title} description={description}>
+  <Container className="mx-4">
+    <article>
+      <section class="text-center text-slate-500">
+        <h1 class="text-3xl font-bold text-slate-700">{title}</h1>
+
+        <FormattedDate date={date} />
+        {
+          updatedDate && (
+            <div class="last-updated-on">
+              Last updated on <FormattedDate date={updatedDate} />
+            </div>
+          )
+        }
+        <hr class="my-8 border-slate-200 border-t-2" />
+      </section>
+      <section>
+        <Prose>
+          <slot />
+        </Prose>
+      </section>
+    </article>
+  </Container>
+
+  <div class={"mx-4 md:mx-auto md:max-w-prose mt-8 mb-16"}>
+    <DisqusComment />
+  </div>
+</Layout>
