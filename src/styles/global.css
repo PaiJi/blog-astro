@@ -1,4 +1,6 @@
 :root {
+  --gray: 96, 115, 159;
+  --gray-light: 229, 233, 240;
   --gray-gradient: rgba(var(--gray-light), 50%), #fff;
   /* copy for old blog */
   --foreground-rgb: 0, 0, 0;
