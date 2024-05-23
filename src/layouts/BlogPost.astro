@@ -5,15 +5,29 @@ import Layout from "./Layout.astro";
 import Container from "@components/Container.astro";
 import Prose from "@components/post/Prose.astro";
 import DisqusComment from "@components/post/DisqusComment/index.astro";
+import { Image } from "astro:assets";
 
 type Props = CollectionEntry<"blog">["data"];
 
-const { title, description, date, updatedDate, heroImage } = Astro.props;
+const { title, description, date, updatedDate, heroImage, photos } =
+  Astro.props;
 ---
 
 <Layout title={title} description={description}>
-  <Container className="mx-4">
-    <article>
+  <article>
+    {
+      photos?.[0] && (
+        <Container className="max-w-4xl my-12">
+          <Image
+            alt={`${title}-hero image`}
+            inferSize={true}
+            class="w-full object-fill object-center shadow-slate-300 shadow-lg overflow-hidden"
+            src={photos[0]}
+          />
+        </Container>
+      )
+    }
+    <Container className="mx-4">
       <section class="text-center text-slate-500">
         <h1 class="text-3xl font-bold text-slate-700">{title}</h1>
 
@@ -32,8 +46,8 @@ const { title, description, date, updatedDate, heroImage } = Astro.props;
           <slot />
         </Prose>
       </section>
-    </article>
-  </Container>
+    </Container>
+  </article>
 
   <div class={"mx-4 md:mx-auto md:max-w-prose mt-8 mb-16"}>
     <DisqusComment />

@@ -6,12 +6,23 @@ import clsx from "clsx";
   class={clsx(
     "mx-auto",
     "prose dark:prose-invert",
-    "prose-h1:font-bold prose-h1:text-xl",
+    "prose-headings:no-underline prose-headings:text-slate-600",
+    "prose-h2:decoration-primary-blue prose-h2:decoration-4 prose-h2:underline prose-h2:underline-offset-8",
+    "prose-h3:decoration-blue-400 prose-h2:decoration-4 prose-h2:underline prose-h2:underline-offset-8",
+    "prose-h4:decoration-blue-300 prose-h2:decoration-4 prose-h2:underline prose-h2:underline-offset-8",
     "prose-a:text-primary-blue",
-    "prose-p:text-justify",
+    "prose-p:leading-rleading-loose prose-p:tracking-wide prose-p:break-words",
     "prose-img:rounded-xl",
-    "prose-headings:underline"
+    "prose-ul:bg-primary-blue-light prose-ul:rounded prose-ul:py-1 prose-ul:text-slate-500"
   )}
 >
   <slot />
 </div>
+
+<style is:global>
+  :where(code):not(
+      :where([class~="not-prose"], [class~="not-prose"] *) pre code
+    ) {
+    @apply bg-primary-blue-light rounded px-2 py-1 text-sm !font-normal !text-slate-700;
+  }
+</style>
