@@ -4,6 +4,8 @@ import BaseHead from "../layouts/BaseHead.astro";
 import Header from "../layouts/Header.astro";
 import Footer from "../layouts/Footer.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import GA4 from "./track/GA4.astro";
+import Umami from "./track/Umami.astro";
 
 interface Props {
   title?: string;
@@ -28,5 +30,7 @@ const { title, description = SITE_DESCRIPTION } = Astro.props;
       <slot />
     </main>
     <Footer />
+    {import.meta.env.PROD && <Umami />}
+    {import.meta.env.PROD && <GA4 />}
   </body>
 </html>
