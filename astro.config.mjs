@@ -13,6 +13,13 @@ export default defineConfig({
     enabled: false,
   },
 
+  redirects: {
+    "/tag/大振/": "/tags/大振/",
+    "/tag/steam/": "/tags/steam/",
+    "/limit-spotify-cache/": "/limit-spotify-cache-size/",
+    "/category/diary/": "/categories/diary/",
+  },
+
   markdown: {
     shikiConfig: {
       // 选择 Shiki 内置的主题（或添加你自己的主题）

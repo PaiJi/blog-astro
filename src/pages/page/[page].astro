@@ -3,22 +3,23 @@ import Container from "@components/Container.astro";
 import Pagination from "@components/post/Pagination.astro";
 import PostList from "@components/post/PostList.astro";
 import Layout from "@layouts/Layout.astro";
-import { getTargetPage } from "@utils/post";
+import { getAllPost, getTargetPage } from "@utils/post";
 import type { PaginateFunction } from "astro";
 import { getCollection } from "astro:content";
+import { PAGE_SIZE } from "src/consts";
 
 export async function getStaticPaths({
   paginate,
 }: {
   paginate: PaginateFunction;
 }) {
-  const posts = await getCollection("blog");
+  const posts = await getAllPost();
   return paginate(
     posts.map((post) => ({
       params: { slug: post.data.permalink },
       // props: post,
     })),
-    { pageSize: 10 }
+    { pageSize: PAGE_SIZE }
   );
 }
 // 所有分页数据都在 "page" 参数中传递
