@@ -42,4 +42,10 @@ export default defineConfig({
       transformers: [],
     },
   },
+
+  vite: {
+    resolve: {
+      preserveSymlinks: true,
+    },
+  },
 });
