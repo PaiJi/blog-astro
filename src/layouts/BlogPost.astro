@@ -39,10 +39,12 @@ const { title, description, date, updatedDate, heroImage, photos } =
             </div>
           )
         }
-        <hr class="my-8 border-slate-200 border-t-2" />
+        <hr class="my-8 border-slate-100 border-t-2" />
       </section>
       <section>
         <Prose>
+          <p>{description}</p>
+
           <slot />
         </Prose>
       </section>

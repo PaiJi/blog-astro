@@ -5,11 +5,8 @@ import clsx from "clsx";
 <div
   class={clsx(
     "mx-auto",
-    "prose dark:prose-invert",
+    "prose max-w-none dark:prose-invert-disabled",
     "prose-headings:no-underline prose-headings:text-slate-600",
-    "prose-h2:decoration-primary-blue prose-h2:decoration-4 prose-h2:underline prose-h2:underline-offset-8",
-    "prose-h3:decoration-blue-400 prose-h2:decoration-4 prose-h2:underline prose-h2:underline-offset-8",
-    "prose-h4:decoration-blue-300 prose-h2:decoration-4 prose-h2:underline prose-h2:underline-offset-8",
     "prose-a:text-primary-blue",
     "prose-p:leading-rleading-loose prose-p:tracking-wide prose-p:break-words",
     "prose-img:rounded-xl",
@@ -24,6 +21,6 @@ import clsx from "clsx";
   :where(code):not(
       :where([class~="not-prose"], [class~="not-prose"] *) pre code
     ) {
-    @apply bg-primary-blue-light rounded px-2 py-1 text-sm !font-normal !text-slate-700;
+    @apply bg-primary-blue-light rounded p-1 mx-1 text-sm !font-normal !text-slate-700;
   }
 </style>
