@@ -11,6 +11,10 @@ type Props = CollectionEntry<"blog">["data"];
 
 const { title, description, date, updatedDate, heroImage, photos } =
   Astro.props;
+
+// const distanceDays = Math.floor(
+//   (new Date().getTime() - date.getTime()) / (1000 * 60 * 60 * 24)
+// );
 ---
 
 <Layout title={title} description={description}>
@@ -31,20 +35,28 @@ const { title, description, date, updatedDate, heroImage, photos } =
       <section class="text-center text-slate-500">
         <h1 class="text-3xl font-bold text-slate-700">{title}</h1>
 
-        <FormattedDate date={date} />
-        {
-          updatedDate && (
-            <div class="last-updated-on">
-              Last updated on <FormattedDate date={updatedDate} />
-            </div>
-          )
-        }
+        <div class="">
+          <FormattedDate date={date} />
+          {
+            updatedDate && (
+              <span>
+                / 最后更新于 <FormattedDate date={updatedDate} />
+              </span>
+            )
+          }
+        </div>
         <hr class="my-8 border-slate-100 border-t-2" />
       </section>
       <section>
         <Prose>
+          <!-- {
+            distanceDays > 90 && (
+              <div class="bg-red-100 rounded px-2 py-2 border border-red-200 text-slate-600">
+                本文发布于 {distanceDays} 天前，文中所描述的信息可能已发生改变。
+              </div>
+            )
+          } -->
           <p>{description}</p>
-
           <slot />
         </Prose>
       </section>
