@@ -2226,6 +2226,7 @@ __metadata:
     astro: "npm:5.17.2"
     clsx: "npm:^2.1.1"
     disqusjs: "npm:^3.2.1"
+    prettier: "npm:3.8.1"
     react: "npm:^18.3.1"
     react-dom: "npm:^18.3.1"
     react-icons: "npm:^5.5.0"
@@ -5451,7 +5452,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:^3.5.0":
+"prettier@npm:3.8.1, prettier@npm:^3.5.0":
   version: 3.8.1
   resolution: "prettier@npm:3.8.1"
   bin:

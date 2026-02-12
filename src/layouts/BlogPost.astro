@@ -9,8 +9,7 @@ import { Image } from "astro:assets";
 
 type Props = CollectionEntry<"blog">["data"];
 
-const { title, description, date, updatedDate, heroImage, photos } =
-  Astro.props;
+const { title, description, date, updatedDate, heroImage } = Astro.props;
 
 // const distanceDays = Math.floor(
 //   (new Date().getTime() - date.getTime()) / (1000 * 60 * 60 * 24)
@@ -20,13 +19,14 @@ const { title, description, date, updatedDate, heroImage, photos } =
 <Layout title={title} description={description}>
   <article>
     {
-      photos?.[0] && (
+      heroImage && (
         <Container className="max-w-4xl my-12">
           <Image
             alt={`${title}-hero image`}
-            inferSize={true}
             class="w-full object-fill object-center shadow-slate-300 shadow-lg overflow-hidden"
-            src={photos[0]}
+            src={heroImage}
+            width={890}
+            height={400}
           />
         </Container>
       )

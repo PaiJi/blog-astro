@@ -3,7 +3,7 @@ import { PAGE_SIZE } from "src/consts";
 
 export async function getAllPost() {
   return (await getCollection("blog", (post) => !post.data.draft)).sort(
-    (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+    (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
   );
 }
 
@@ -18,9 +18,9 @@ export async function getTargetPage(page: number) {
 }
 
 export async function getTagPage(tag: string, page: number) {
-  const posts = (
-    await getCollection("blog", (p) => p.data.tags?.includes(tag))
-  ).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+  const posts = (await getCollection("blog", (p) => p.data.tags?.includes(tag))).sort(
+    (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+  );
 
   return posts.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
 }
