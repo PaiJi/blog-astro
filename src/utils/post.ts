@@ -1,6 +1,13 @@
 import { getCollection } from "astro:content";
 import { PAGE_SIZE } from "src/consts";
 
+type TaxonomyField = "tags" | "categories";
+
+export interface TaxonomyCountItem {
+  name: string;
+  count: number;
+}
+
 export async function getAllPost() {
   return (await getCollection("blog", (post) => !post.data.draft)).sort(
     (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
@@ -51,6 +58,40 @@ export async function getAllCategory(): Promise<string[]> {
   return Array.from(tagsSet);
 }
 
+function sortTaxonomy(items: TaxonomyCountItem[]) {
+  return items.sort((a, b) => {
+    if (b.count !== a.count) {
+      return b.count - a.count;
+    }
+
+    return a.name.localeCompare(b.name, "zh-Hans-CN");
+  });
+}
+
+async function getTaxonomyWithCount(field: TaxonomyField): Promise<TaxonomyCountItem[]> {
+  const posts = await getAllPost();
+  const countMap = new Map<string, number>();
+
+  posts.forEach((post) => {
+    const values = post.data[field];
+    values?.forEach((value) => {
+      countMap.set(value, (countMap.get(value) || 0) + 1);
+    });
+  });
+
+  return sortTaxonomy(
+    Array.from(countMap.entries()).map(([name, count]) => ({ name, count })),
+  );
+}
+
+export async function getAllTagWithCount() {
+  return getTaxonomyWithCount("tags");
+}
+
+export async function getAllCategoryWithCount() {
+  return getTaxonomyWithCount("categories");
+}
+
 export async function getTagPosts(tag: string) {
   const posts = (
     await getCollection("blog", (p) => {
@@ -59,6 +100,14 @@ export async function getTagPosts(tag: string) {
   ).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
   return posts;
+}
+
+export function getTagUrl(tag: string) {
+  return `/tags/${encodeURIComponent(tag)}`;
+}
+
+export function getCategoryUrl(category: string) {
+  return `/categories/${encodeURIComponent(category)}`;
 }
 
 export async function getCategoryPosts(category: string) {

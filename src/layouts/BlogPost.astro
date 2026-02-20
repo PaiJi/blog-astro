@@ -6,14 +6,11 @@ import Container from "@components/Container.astro";
 import Prose from "@components/post/Prose.astro";
 import DisqusComment from "@components/post/DisqusComment/index.astro";
 import { Image } from "astro:assets";
+import { getCategoryUrl, getTagUrl } from "@utils/post";
 
 type Props = CollectionEntry<"blog">["data"];
 
-const { title, description, date, updatedDate, heroImage } = Astro.props;
-
-// const distanceDays = Math.floor(
-//   (new Date().getTime() - date.getTime()) / (1000 * 60 * 60 * 24)
-// );
+const { title, description, date, updatedDate, heroImage, categories, tags } = Astro.props;
 ---
 
 <Layout title={title} description={description}>
@@ -45,17 +42,46 @@ const { title, description, date, updatedDate, heroImage } = Astro.props;
             )
           }
         </div>
+        <div class="mt-3 flex flex-wrap justify-center gap-2 text-sm">
+          {categories && categories.length > 0 && (
+            <span class="rounded-full border border-slate-200 px-3 py-1 text-slate-500">
+              <span>分类: </span>
+              {categories.map((category: string, index: number) => (
+                <>
+                  {index > 0 && <span class="px-1 text-slate-300">/</span>}
+                  <a
+                    href={getCategoryUrl(category)}
+                    class="transition hover:text-primary-blue"
+                  >
+                    {category}
+                  </a>
+                </>
+              ))}
+            </span>
+          )}
+          {tags && tags.length > 0 && (
+            <span class="rounded-full border border-slate-200 px-3 py-1 text-slate-500">
+              <span>标签: </span>
+              {tags.map((tag: string, index: number) => (
+                <>
+                  {index > 0 && <span class="px-1 text-slate-300">/</span>}
+                  <a href={getTagUrl(tag)} class="transition hover:text-primary-blue">
+                    {tag}
+                  </a>
+                </>
+              ))}
+            </span>
+          )}
+        </div>
         <hr class="my-8 border-slate-100 border-t-2" />
       </section>
       <section>
         <Prose>
-          <!-- {
-            distanceDays > 90 && (
-              <div class="bg-red-100 rounded px-2 py-2 border border-red-200 text-slate-600">
-                本文发布于 {distanceDays} 天前，文中所描述的信息可能已发生改变。
-              </div>
-            )
-          } -->
+          <div
+            id="post-expiration-notice"
+            class="hidden bg-red-100 rounded px-2 py-2 border border-red-200 text-slate-600"
+            data-published-at={date.toISOString()}
+          />
           <p>{description}</p>
           <slot />
         </Prose>
@@ -67,3 +93,31 @@ const { title, description, date, updatedDate, heroImage } = Astro.props;
     <DisqusComment />
   </div>
 </Layout>
+
+<script>
+  function renderExpirationNotice() {
+    const expirationNoticeEl = document.getElementById("post-expiration-notice");
+
+    if (!(expirationNoticeEl instanceof HTMLDivElement)) {
+      return;
+    }
+
+    const publishedAt = expirationNoticeEl.dataset.publishedAt;
+
+    if (!publishedAt) {
+      return;
+    }
+
+    const publishedTime = new Date(publishedAt).getTime();
+    const now = Date.now();
+    const distanceDays = Math.floor((now - publishedTime) / (1000 * 60 * 60 * 24));
+
+    if (distanceDays > 90) {
+      expirationNoticeEl.textContent = `本文发布于 ${distanceDays} 天前，文中所描述的信息可能已发生改变。`;
+      expirationNoticeEl.classList.remove("hidden");
+    }
+  }
+
+  renderExpirationNotice();
+  document.addEventListener("astro:page-load", renderExpirationNotice);
+</script>
