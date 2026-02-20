@@ -1,0 +1,379 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Container from "@components/Container.astro";
+import { Image } from "astro:assets";
+
+interface RamenShop {
+  name: string;
+  city: string;
+  address: string;
+  type: string;
+  status: "想去" | "推荐" | "拔草";
+  score: number;
+  recommendationReason: string;
+  recommendedDishes: {
+    name: string;
+    price: number;
+    image: string;
+  }[];
+}
+
+const ramenList: RamenShop[] = [
+  {
+    name: "博多一幸舍",
+    city: "上海",
+    address: "美罗城地下美食街",
+    type: "博多",
+    status: "推荐",
+    score: 9,
+    recommendationReason: `鸡排的日式拉面启蒙，自从多年前在北京芳草地吃过第一次就惊为天人，去广州的时候基本天天吃，后来到上海了反而吃的少了，大概是上海的日式拉面实在太卷了。说实话博多在总部所在地广州好像也一直是在收缩，上海也只剩下一家店了。以前也是要排队才能吃到的，现在都能随便进了，大众点评上很多人因为熬豚骨的臭味给差评，其实这个有点冤枉了，没有臭味的话怕不是已经变成料理包拉面了，说你呢对门的某家连锁拉面店。
+      推荐菜的话就是招牌拉面了，溏心蛋也不错，可以加点。以前小菜都是放桌子上免费加的，后来放冰柜了得管服务员要，可以一试。
+      `,
+    recommendedDishes: [
+      {
+        name: "博多豚骨拉面",
+        price: 58,
+        image: "https://qcloud-cdn-static.lonepixel.cn/blog/b4f02e85b0424938900ea41305a35004.png",
+      },
+      {
+        name: "小菜",
+        price: 0,
+        image: "https://qcloud-cdn-static.lonepixel.cn/blog/ceeed1f021bf4b92bdf9024497d63103.png",
+      },
+    ],
+  },
+  {
+    name: "力家·家系拉面居酒屋",
+    city: "上海",
+    address: "长宁区安龙路545号",
+    type: "家系",
+    status: "推荐",
+    score: 8,
+    recommendationReason:
+      "是很少见的家系拉面，在上海并不多，也是比较重口浓稠的拉面，好这口的朋友不要错过！店里其实主打的是喝酒吧，记得有什么畅饮之类的套餐，只晚上营业，开到凌晨5点。",
+    recommendedDishes: [
+      {
+        name: "本格横滨豚骨家系拉面",
+        price: 58,
+        image: "https://qcloud-cdn-static.lonepixel.cn/blog/47b92522ba59418a87aa05e1af348b82.png",
+      },
+    ],
+  },
+  {
+    name: "研串面坊",
+    city: "上海",
+    address: "长宁区水城路367号",
+    type: "博多",
+    status: "推荐",
+    score: 7,
+    recommendationReason:
+      "这家其实什么都卖，有烧鸟有拉面之类的，所以不算是拉面专门店，因此感觉拉面的水准就不是很高了，比如要论博多豚骨的话，肯定打不过那几家博多专门店。但是我在这里发现了很好吃的油拌面，很惊喜。",
+    recommendedDishes: [
+      {
+        name: "油拌面",
+        price: 55,
+        image: "https://qcloud-cdn-static.lonepixel.cn/blog/1aab5b5abfe748d487a9aa745eaf1bb2.png",
+      },
+    ],
+  },
+  {
+    name: "本场博多豚骨拉面",
+    city: "上海",
+    address: "长宁区仙霞路新村街道新渝东路252号",
+    type: "博多",
+    status: "拔草",
+    score: 7,
+    recommendationReason: "如果我没有吃过博多一幸舍，我应该很会很喜欢他们家。",
+    recommendedDishes: [
+      {
+        name: "博多豚骨拉面",
+        price: 32,
+        image: "https://placehold.jp/24/f3f4f6/64748b/320x220.png?text=本场博多豚骨拉面",
+      },
+    ],
+  },
+  {
+    name: "益二郎拉面",
+    city: "上海",
+    address: "长宁区金虹桥商场负二楼",
+    type: "二郎",
+    status: "推荐",
+    score: 7,
+    recommendationReason:
+      "前段时间二郎拉面不知道为什么在国内很火，这家二郎也顺势开进了金虹桥底下进行激战（金虹桥真的很卷）。和 AJIYA 家的二郎不太一样的是，这家的二郎应该进行了一些本地化改良，试图让更多的人接受，建议没吃过的可以先从他家的吃起，觉得不满足再去冲 AJIYA。",
+    recommendedDishes: [
+      {
+        name: "二郎拉面",
+        price: 58,
+        image: "https://placehold.jp/24/f3f4f6/64748b/320x220.png?text=二郎拉面",
+      },
+    ],
+  },
+  {
+    name: "AJIYA·炭火烤肉",
+    city: "上海",
+    address: "长宁区仙霞路333号",
+    type: "二郎",
+    status: "推荐",
+    score: 8,
+    recommendationReason:
+      "个人感觉这个应该是上海最接近本土的二郎？好吃是好吃，就是没有实力的话千万不要学着动漫里加什么双倍大蒜双倍叉烧，吃完下面这碗之后我到现在都没再吃过二郎......",
+    recommendedDishes: [
+      {
+        name: "二郎拉面",
+        price: 58,
+        image: "https://qcloud-cdn-static.lonepixel.cn/blog/05e95ac57a8546b4814906d06c6de94e.png",
+      },
+    ],
+  },
+  {
+    name: "寸屋拉面",
+    city: "上海",
+    address: "连锁店",
+    type: "博多",
+    status: "拔草",
+    score: 6,
+    recommendationReason: "因为吃过太久已经想不起来了，中规中矩的拉面吧。",
+    recommendedDishes: [
+      {
+        name: "豚骨拉面",
+        price: 38,
+        image: "https://placehold.jp/24/f3f4f6/64748b/320x220.png?text=%E6%9C%AD%E5%B9%8C%E5%91%B3%E5%99%8C",
+      },
+    ],
+  },
+  {
+    name: "家康居酒屋",
+    city: "上海",
+    address: "长宁区虹桥街道兴义路48号4号商铺",
+    type: "蘸面",
+    status: "推荐",
+    score: 9,
+    recommendationReason:
+      "上海蘸面唯一的神！这个品类在上海似乎确实竞争对手，还挺奇怪的。如果喜欢吃这种重口味蘸面，家康是必去的选择！因为生意很好基本不可能到店就吃，提前几天订位是上上策。",
+    recommendedDishes: [
+      {
+        name: "味噌蘸面",
+        price: 52,
+        image: "https://qcloud-cdn-static.lonepixel.cn/blog/08c11b2240074978a8d782954c1bb488.png",
+      },
+    ],
+  },
+];
+
+const ramenTypes: string[] = ["全部", ...new Set(ramenList.map((shop) => shop.type))];
+const sortedRamenList = [...ramenList].sort((a, b) => b.score - a.score);
+---
+
+<Layout title="鸡排的日式拉面笔记" description="">
+  <Container className="mx-4 mt-10">
+    <h1 class="text-3xl font-bold text-slate-600 md:text-3xl">鸡排的日式拉面笔记</h1>
+    <p class="mt-3 text-slate-600">吃过好多拉面，随手记录一下👀</p>
+  </Container>
+
+  <section class="mx-4 md:mx-auto max-w-3xl mt-8 mb-14" data-ramen-root>
+    <div class="rounded-3xl border border-slate-200 bg-white/80 p-6 shadow-sm backdrop-blur-sm md:p-8">
+      <div class="flex flex-wrap gap-2" role="tablist" aria-label="拉面流派筛选">
+        {
+          ramenTypes.map((type, index) => (
+            <button
+              type="button"
+              data-filter-type-btn
+              data-type={type}
+              class:list={[
+                "rounded-full border px-4 py-1.5 text-sm transition",
+                index === 0
+                  ? "border-primary-blue bg-primary-blue text-white"
+                  : "border-slate-200 bg-white text-slate-600 hover:border-primary-blue hover:text-primary-blue",
+              ]}
+            >
+              {type}
+            </button>
+          ))
+        }
+      </div>
+    </div>
+
+    <ul class="mt-6 space-y-4" data-ramen-list>
+      {
+        sortedRamenList.map((shop) => (
+          <li
+            data-ramen-item
+            data-type={shop.type}
+            data-status={shop.status}
+            class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm"
+          >
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <div class="mt-1 flex items-center gap-2">
+                  <h2 class="text-xl font-bold text-slate-700">{shop.name}</h2>
+                  <span
+                    class:list={[
+                      "rounded-full px-2 py-0.5 text-xs",
+                      shop.status === "推荐"
+                        ? "bg-emerald-50 text-emerald-700"
+                        : shop.status === "拔草"
+                          ? "bg-slate-100 text-slate-700"
+                          : "bg-amber-50 text-amber-700",
+                    ]}
+                  >
+                    {shop.status}
+                  </span>
+                </div>
+                <p class="mt-1 text-sm text-slate-500">
+                  {shop.city} · {shop.address} · {shop.type}
+                </p>
+              </div>
+              <span class="rounded-lg bg-primary-blue-light px-2.5 py-1 text-sm font-semibold text-slate-700">
+                {shop.score}/10
+              </span>
+            </div>
+
+            <p class="mt-3 whitespace-pre-line text-sm text-slate-600">{shop.recommendationReason}</p>
+            <div class="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
+              {shop.recommendedDishes.map((dish) => (
+                <div class="overflow-hidden rounded-xl border border-slate-200 bg-slate-50">
+                  <button
+                    type="button"
+                    class="block w-full"
+                    data-preview-open
+                    data-preview-src={dish.image}
+                    data-preview-alt={dish.name}
+                  >
+                    <Image
+                      src={dish.image}
+                      alt={dish.name}
+                      class="h-60 w-full object-cover"
+                      loading="lazy"
+                      width={320}
+                      height={220}
+                    />
+                  </button>
+                  <div class="flex items-center justify-between px-3 py-2">
+                    <span class="text-sm text-slate-600">{dish.name}</span>
+                    <span class="text-sm font-medium text-slate-700">¥{dish.price}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+
+    <div
+      data-preview-modal
+      class="fixed inset-0 z-50 hidden items-center justify-center bg-black/70 px-4"
+      role="dialog"
+      aria-modal="true"
+      aria-label="菜品图片预览"
+    >
+      <div class="relative w-full max-w-3xl">
+        <button
+          type="button"
+          class="absolute -top-10 right-0 rounded-md bg-white/90 px-3 py-1 text-sm text-slate-700"
+          data-preview-close
+        >
+          关闭
+        </button>
+        <img data-preview-image src="" alt="" class="h-auto max-h-[80vh] w-full rounded-xl object-contain" />
+      </div>
+    </div>
+
+    <div
+      data-empty-state
+      hidden
+      class="mt-6 rounded-2xl border border-dashed border-slate-200 bg-white p-6 text-center text-slate-500"
+    >
+      这个分类暂时没有条目。
+    </div>
+  </section>
+</Layout>
+
+<script>
+  const root = document.querySelector("[data-ramen-root]");
+
+  if (root) {
+    const typeButtons = root.querySelectorAll("[data-filter-type-btn]");
+    const items = root.querySelectorAll("[data-ramen-item]");
+    const empty = root.querySelector("[data-empty-state]");
+    const previewButtons = root.querySelectorAll("[data-preview-open]");
+    const previewModal = root.querySelector("[data-preview-modal]") as HTMLElement | null;
+    const previewImage = root.querySelector("[data-preview-image]") as HTMLImageElement | null;
+    const previewClose = root.querySelector("[data-preview-close]") as HTMLButtonElement | null;
+
+    const activeClass = ["border-primary-blue", "bg-primary-blue", "text-white"];
+    const inactiveClass = [
+      "border-slate-200",
+      "bg-white",
+      "text-slate-600",
+      "hover:border-primary-blue",
+      "hover:text-primary-blue",
+    ];
+    let activeType = "全部";
+
+    const setFilter = () => {
+      let visibleCount = 0;
+
+      typeButtons.forEach((button) => {
+        const isActive = button.getAttribute("data-type") === activeType;
+        activeClass.forEach((className) => {
+          button.classList.toggle(className, isActive);
+        });
+        inactiveClass.forEach((className) => {
+          button.classList.toggle(className, !isActive);
+        });
+      });
+
+      items.forEach((item) => {
+        const itemType = item.getAttribute("data-type");
+        const matchType = activeType === "全部" || itemType === activeType;
+        const shouldShow = matchType;
+        item.toggleAttribute("hidden", !shouldShow);
+        if (shouldShow) visibleCount += 1;
+      });
+
+      if (empty) empty.toggleAttribute("hidden", visibleCount > 0);
+    };
+
+    typeButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        activeType = button.getAttribute("data-type") || "全部";
+        setFilter();
+      });
+    });
+
+    previewButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        if (!previewModal || !previewImage) return;
+        const src = button.getAttribute("data-preview-src");
+        const alt = button.getAttribute("data-preview-alt") || "";
+        if (!src) return;
+        previewImage.src = src;
+        previewImage.alt = alt;
+        previewModal.classList.remove("hidden");
+        previewModal.classList.add("flex");
+        document.body.style.overflow = "hidden";
+      });
+    });
+
+    const closePreview = () => {
+      if (!previewModal || !previewImage) return;
+      previewModal.classList.add("hidden");
+      previewModal.classList.remove("flex");
+      previewImage.src = "";
+      previewImage.alt = "";
+      document.body.style.overflow = "";
+    };
+
+    previewClose?.addEventListener("click", closePreview);
+    previewModal?.addEventListener("click", (event) => {
+      if (event.target === previewModal) closePreview();
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") closePreview();
+    });
+
+    setFilter();
+  }
+</script>
