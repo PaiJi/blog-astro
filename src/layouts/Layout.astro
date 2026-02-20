@@ -1,11 +1,11 @@
 ---
-import { ViewTransitions } from "astro:transitions";
 import BaseHead from "../layouts/BaseHead.astro";
 import Header from "../layouts/Header.astro";
 import Footer from "../layouts/Footer.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 import GA4 from "./track/GA4.astro";
 import Umami from "./track/Umami.astro";
+import ClientRouter from "astro/components/ClientRouter.astro";
 
 interface Props {
   title?: string;
@@ -22,7 +22,7 @@ const { title, description = SITE_DESCRIPTION } = Astro.props;
       title={title ? `${title} - ${SITE_TITLE}` : SITE_TITLE}
       description={description}
     />
-    <ViewTransitions />
+    <ClientRouter />
   </head>
   <body>
     <Header />
