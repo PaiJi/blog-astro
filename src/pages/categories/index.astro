@@ -1,0 +1,37 @@
+---
+import Container from "@components/Container.astro";
+import Layout from "@layouts/Layout.astro";
+import { getAllCategoryWithCount, getCategoryUrl } from "@utils/post";
+
+const categories = await getAllCategoryWithCount();
+---
+
+<Layout title="分类列表">
+  <section class="mx-4 md:mx-auto">
+    <Container>
+      <h1 class="text-slate-500 text-center text-4xl font-bold mt-6 mb-12">
+        分类列表
+      </h1>
+
+      {
+        categories.length > 0 ? (
+          <ul class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {categories.map((category) => (
+              <li>
+                <a
+                  href={getCategoryUrl(category.name)}
+                  class="flex items-center justify-between rounded-xl border border-slate-100 bg-white px-4 py-3 text-slate-600 transition hover:border-primary-blue hover:text-primary-blue"
+                >
+                  <span>{category.name}</span>
+                  <span class="text-sm text-slate-400">{category.count}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p class="text-slate-500 text-center">暂无分类</p>
+        )
+      }
+    </Container>
+  </section>
+</Layout>

@@ -1,0 +1,37 @@
+---
+import Container from "@components/Container.astro";
+import Layout from "@layouts/Layout.astro";
+import { getAllTagWithCount, getTagUrl } from "@utils/post";
+
+const tags = await getAllTagWithCount();
+---
+
+<Layout title="标签列表">
+  <section class="mx-4 md:mx-auto">
+    <Container>
+      <h1 class="text-slate-500 text-center text-4xl font-bold mt-6 mb-12">
+        标签列表
+      </h1>
+
+      {
+        tags.length > 0 ? (
+          <ul class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {tags.map((tag) => (
+              <li>
+                <a
+                  href={getTagUrl(tag.name)}
+                  class="flex items-center justify-between rounded-xl border border-slate-100 bg-white px-4 py-3 text-slate-600 transition hover:border-primary-blue hover:text-primary-blue"
+                >
+                  <span>#{tag.name}</span>
+                  <span class="text-sm text-slate-400">{tag.count}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p class="text-slate-500 text-center">暂无标签</p>
+        )
+      }
+    </Container>
+  </section>
+</Layout>

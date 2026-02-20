@@ -6,8 +6,9 @@ import { type CollectionEntry } from "astro:content";
 import clsx from "clsx";
 import FormattedDate from "../FormattedDate.astro";
 import { Image } from "astro:assets";
+import { getCategoryUrl, getTagUrl } from "@utils/post";
 const { post } = Astro.props;
-const { permalink, heroImage, title, categories } = post.data;
+const { permalink, heroImage, title, categories, tags } = post.data;
 const isCoverExist = heroImage;
 ---
 
@@ -37,8 +38,9 @@ const isCoverExist = heroImage;
     <div class="flex text-sm mb-1 flex-col">
       <span class="text-text-dark-light">
         <FormattedDate date={post.data.date} />
-        <div class="inline-flex gap-1">
-          {categories?.map((c) => <a href={`/categories/${c}`}>{c}</a>)}
+        <div class="inline-flex gap-2 ml-2">
+          {categories?.map((c) => <a href={getCategoryUrl(c)}>#{c}</a>)}
+          {tags?.map((tag) => <a href={getTagUrl(tag)}>#{tag}</a>)}
         </div>
       </span>
     </div>

@@ -3,7 +3,7 @@ import Container from "@components/Container.astro";
 import Pagination from "@components/post/Pagination.astro";
 import PostList from "@components/post/PostList.astro";
 import Layout from "@layouts/Layout.astro";
-import { getAllCategory, getCategoryPosts, getTagPosts } from "@utils/post";
+import { getAllCategory, getCategoryPosts } from "@utils/post";
 import type { PaginateFunction } from "astro";
 import { PAGE_SIZE } from "src/consts";
 
@@ -37,7 +37,7 @@ const params = Astro.params;
   <section class="mx-4 md:mx-auto">
     <Container>
       <h1 class="text-slate-500 text-center text-4xl font-bold mt-6 mb-12">
-        Category: {params.category}
+        分类: {params.category}
       </h1>
 
       <PostList posts={page.data} />
