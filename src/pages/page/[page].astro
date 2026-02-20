@@ -5,7 +5,6 @@ import PostList from "@components/post/PostList.astro";
 import Layout from "@layouts/Layout.astro";
 import { getAllPost, getTargetPage } from "@utils/post";
 import type { PaginateFunction } from "astro";
-import { getCollection } from "astro:content";
 import { PAGE_SIZE } from "src/consts";
 
 export async function getStaticPaths({

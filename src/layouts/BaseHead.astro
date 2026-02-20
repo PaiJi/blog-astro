@@ -10,7 +10,7 @@ interface Props {
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const { title, description, image = "/blog-placeholder-1.jpg" } = Astro.props;
+const { title, description } = Astro.props;
 ---
 
 <!-- Global Metadata -->
@@ -20,20 +20,8 @@ const { title, description, image = "/blog-placeholder-1.jpg" } = Astro.props;
 <meta name="generator" content={Astro.generator} />
 
 <!-- Font preloads -->
-<link
-  rel="preload"
-  href="/fonts/SNPro-Bold.woff"
-  as="font"
-  type="font/woff"
-  crossorigin
-/>
-<link
-  rel="preload"
-  href="/fonts/SNPro-Regular.woff"
-  as="font"
-  type="font/woff"
-  crossorigin
-/>
+<link rel="preload" href="/fonts/SNPro-Bold.woff" as="font" type="font/woff" crossorigin />
+<link rel="preload" href="/fonts/SNPro-Regular.woff" as="font" type="font/woff" crossorigin />
 
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
@@ -57,9 +45,4 @@ const { title, description, image = "/blog-placeholder-1.jpg" } = Astro.props;
 <meta property="twitter:description" content={description} />
 <!-- <meta property="twitter:image" content={new URL(image, Astro.url)} /> -->
 
-<link
-  rel="alternate"
-  type="application/rss+xml"
-  title={SITE_TITLE}
-  href={`${Astro.site}rss.xml`}
-/>
+<link rel="alternate" type="application/rss+xml" title={SITE_TITLE} href={`${Astro.site}rss.xml`} />
