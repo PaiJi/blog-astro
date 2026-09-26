@@ -10,17 +10,9 @@ import clsx from "clsx";
     "prose-a:text-primary-blue",
     "prose-p:leading-rleading-loose prose-p:tracking-wide prose-p:break-words",
     "prose-img:rounded-xl",
-    "prose-ul:bg-primary-blue-light prose-ul:rounded prose-ul:py-1 prose-ul:text-slate-500 prose-ul:break-words",
-    "prose-ol:bg-primary-blue-light prose-ol:rounded prose-ol:py-1 prose-ol:text-slate-500 prose-ol:break-words"
+    "prose-ul:bg-primary-blue-light prose-ul:rounded-sm prose-ul:py-1 prose-ul:pr-[1.625em] prose-ul:text-slate-500 prose-ul:break-words",
+    "prose-ol:bg-primary-blue-light prose-ol:rounded-sm prose-ol:py-1 prose-ol:pr-[1.625em] prose-ol:text-slate-500 prose-ol:break-words"
   )}
 >
   <slot />
 </div>
-
-<style is:global>
-  :where(code):not(
-      :where([class~="not-prose"], [class~="not-prose"] *) pre code
-    ) {
-    @apply bg-primary-blue-light rounded p-1 mx-1 text-sm !font-normal !text-slate-700;
-  }
-</style>
