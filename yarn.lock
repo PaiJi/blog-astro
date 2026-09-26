@@ -1300,21 +1300,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tabler/icons-react@npm:^3.36.1":
-  version: 3.36.1
-  resolution: "@tabler/icons-react@npm:3.36.1"
+"@tabler/icons-react@npm:^3.48.0":
+  version: 3.48.0
+  resolution: "@tabler/icons-react@npm:3.48.0"
   dependencies:
-    "@tabler/icons": "npm:"
+    "@tabler/icons": "npm:3.48.0"
   peerDependencies:
     react: ">= 16"
-  checksum: 10c0/325dd0c7a780ec4713a93790b15517dc176af5778c36c49e1fe586113040d2e71330aa85aa9f5900cbae0fe0b78f69016ba73b4b490783c9b7292215f29c686a
+  checksum: 10c0/49c314159da3d19cbb4e4791928a4edd78a02805ac262702b0a177fccbf2b8f3b7ace1ca81e1df873237ef86266dce5bf5547758803e83d24d5887af99716240
   languageName: node
   linkType: hard
 
-"@tabler/icons@npm:":
-  version: 3.36.1
-  resolution: "@tabler/icons@npm:3.36.1"
-  checksum: 10c0/3201b3ccace5756ba9e840ece3922718165b820f760b7bc01bcab21bf7d6fed5da6e876ea9e1155ed498d8eb008e3ac3308b270c402d744014dafad20d99534c
+"@tabler/icons@npm:3.48.0":
+  version: 3.48.0
+  resolution: "@tabler/icons@npm:3.48.0"
+  checksum: 10c0/52c4e582dede13508c6cf34b73c23f80449dde042ee487cb2ef082e92b50cb644f61072871a95f6a0ebb11b117d7f10581455906bb74ed0fa0a9924170876e80
   languageName: node
   linkType: hard
 
@@ -1572,21 +1572,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-dom@npm:^19.2.3":
-  version: 19.2.3
-  resolution: "@types/react-dom@npm:19.2.3"
+"@types/react-dom@npm:^19.3.0":
+  version: 19.3.0
+  resolution: "@types/react-dom@npm:19.3.0"
   peerDependencies:
-    "@types/react": ^19.2.0
-  checksum: 10c0/b486ebe0f4e2fb35e2e108df1d8fc0927ca5d6002d5771e8a739de11239fe62d0e207c50886185253c99eb9dedfeeb956ea7429e5ba17f6693c7acb4c02f8cd1
+    "@types/react": ^19.3.0
+  checksum: 10c0/ce0066d28b62bc6afdd17ca84756b8fbe0f6ffc0c8b1e60739abc30e81510da2edbc1007e6ab3d974d30f5a8c25bb0f7de8d7ce09736c909fe84c0f9aed0b946
   languageName: node
   linkType: hard
 
-"@types/react@npm:^19.2.14":
-  version: 19.2.14
-  resolution: "@types/react@npm:19.2.14"
+"@types/react@npm:^19.3.0":
+  version: 19.3.0
+  resolution: "@types/react@npm:19.3.0"
   dependencies:
     csstype: "npm:^3.2.2"
-  checksum: 10c0/7d25bf41b57719452d86d2ac0570b659210402707313a36ee612666bf11275a1c69824f8c3ee1fdca077ccfe15452f6da8f1224529b917050eb2d861e52b59b7
+  checksum: 10c0/fbcabf303f935ca9f36ed2dcf81751cf84744098c5a683c8a62a0fa7edd31714b48d5c46b12fd0014f7f2dfe4d9ec6de428a850748eec719a70294e51029551b
   languageName: node
   linkType: hard
 
@@ -1981,18 +1981,18 @@ __metadata:
     "@astrojs/sitemap": "npm:3.7.4"
     "@emnapi/core": "npm:^1.11.3"
     "@emnapi/runtime": "npm:^1.11.3"
-    "@tabler/icons-react": "npm:^3.36.1"
+    "@tabler/icons-react": "npm:^3.48.0"
     "@tailwindcss/typography": "npm:^0.5.20"
     "@tailwindcss/vite": "npm:^4.3.3"
-    "@types/react": "npm:^19.2.14"
-    "@types/react-dom": "npm:^19.2.3"
+    "@types/react": "npm:^19.3.0"
+    "@types/react-dom": "npm:^19.3.0"
     astro: "npm:7.3.5"
     clsx: "npm:^2.1.1"
-    disqusjs: "npm:^3.2.1"
-    prettier: "npm:3.8.1"
-    react: "npm:^19.2.4"
-    react-dom: "npm:^19.2.4"
-    react-icons: "npm:^5.5.0"
+    disqusjs: "npm:^3.2.2"
+    prettier: "npm:3.9.9"
+    react: "npm:^19.3.0"
+    react-dom: "npm:^19.3.0"
+    react-icons: "npm:^5.7.0"
     tailwindcss: "npm:^4.3.3"
     typescript: "npm:^5.9.3"
     vite: "npm:^8.3.1"
@@ -2319,12 +2319,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"disqusjs@npm:^3.2.1":
-  version: 3.2.1
-  resolution: "disqusjs@npm:3.2.1"
+"disqusjs@npm:^3.2.2":
+  version: 3.2.2
+  resolution: "disqusjs@npm:3.2.2"
   dependencies:
-    foxact: "npm:^0.2.49"
-    foxts: "npm:^4.5.0"
+    foxact: "npm:^0.3.9"
+    foxts: "npm:^5.9.1"
   peerDependencies:
     preact: ^10.7.1
     react: ^16.11.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
@@ -2333,7 +2333,7 @@ __metadata:
       optional: true
     react:
       optional: true
-  checksum: 10c0/ed00cf07a2db7162fd2eca8b20114afde2bb89cec80bd877e794a986f8a0711eb627a7882d0e8369ff94781683056d83471efd54e8ffff4382ff5c19182ed45b
+  checksum: 10c0/b2d675d1d0f6be4376c657c2e9434e66c29bcd290b404b8eb80add11674bf8d2cb89cded19ad3628affddc6007e09b082c8d7d39ac8d0e31ca6e592c67cee49c
   languageName: node
   linkType: hard
 
@@ -2563,6 +2563,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"event-target-bus@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "event-target-bus@npm:1.1.0"
+  checksum: 10c0/18441b145171394c78c7638da6da9fc981c58cbbfad0bf32064f53cc34519d2bcf8cba68346736a2fd80e853e36faf705e023b50f9db73d86af42736eee29341
+  languageName: node
+  linkType: hard
+
 "eventemitter3@npm:^5.0.4":
   version: 5.0.4
   resolution: "eventemitter3@npm:5.0.4"
@@ -2591,17 +2598,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fast-escape-html@npm:^1.1.0":
-  version: 1.1.0
-  resolution: "fast-escape-html@npm:1.1.0"
-  checksum: 10c0/81d07b8efdd47d8427963b6047eaeb58a56da78fa9711499320474b72afc85a5fce060e2fa965605d8d4fa10ff6b34f3169bd1efe79aeecf02b200dcf13952a0
-  languageName: node
-  linkType: hard
-
-"fast-escape-regexp@npm:^1.0.1":
-  version: 1.0.1
-  resolution: "fast-escape-regexp@npm:1.0.1"
-  checksum: 10c0/59d682a6f68c4b83b42bc3280d79f79f1596fb2e11867a0f4126e918b7da0cd3d6fd8558f12adee4d07184a9652e5f1f0f1b18bbf283f2c10eca66ede90ac4c9
+"fast-fnv1a@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "fast-fnv1a@npm:1.0.0"
+  checksum: 10c0/9d98e596c98886eb9953a7deccdae070e82635570141ff6faa1cc2fda9720dedcb61aa68c6cfb376b7c7e0610ac67bdc3af3baa9ba3b25fc018884cd82034ab5
   languageName: node
   linkType: hard
 
@@ -2689,6 +2689,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"fnv1a52@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "fnv1a52@npm:1.0.0"
+  checksum: 10c0/1a039f4b99243389b4e0a1f9b2b9a145b1999df843e7a2f82858a1795f0d78a7fdf9283f6c85e51a2ff3189b671696796c3070a123c3c356926714300bb3e60e
+  languageName: node
+  linkType: hard
+
 "fontace@npm:~0.4.1":
   version: 0.4.1
   resolution: "fontace@npm:0.4.1"
@@ -2717,11 +2724,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"foxact@npm:^0.2.49":
-  version: 0.2.52
-  resolution: "foxact@npm:0.2.52"
+"foxact@npm:^0.3.9":
+  version: 0.3.12
+  resolution: "foxact@npm:0.3.12"
   dependencies:
     client-only: "npm:^0.0.1"
+    event-target-bus: "npm:^1.1.0"
     server-only: "npm:^0.0.1"
   peerDependencies:
     react: "*"
@@ -2731,17 +2739,17 @@ __metadata:
       optional: true
     react-dom:
       optional: true
-  checksum: 10c0/baf37000bed18cff9cf57ffc415aba737045d5f512142b879e782b48388a5011edad299f4a76014eca49ac9bb29897c11945d83fbf7494cd352a3bf538eefc21
+  checksum: 10c0/94141bf4d801f4ca02c833de210a26fc6c55ad3c3cc5c29901badb3d81bb9528dedd06643f047f95835581a390ebc9f1ffe93f74f85cb7ee20e317ccd8202f28
   languageName: node
   linkType: hard
 
-"foxts@npm:^4.5.0":
-  version: 4.6.0
-  resolution: "foxts@npm:4.6.0"
+"foxts@npm:^5.9.1":
+  version: 5.9.1
+  resolution: "foxts@npm:5.9.1"
   dependencies:
-    fast-escape-html: "npm:^1.1.0"
-    fast-escape-regexp: "npm:^1.0.1"
-  checksum: 10c0/c14ba37e5a5ebcdc548d8869c6f192cd6474250964cca0d19fcd3cb31e315bfb7038e58776ba0e784502575b49a711fe82c6491c39d69149c4aef08e205f952e
+    fast-fnv1a: "npm:^1.0.0"
+    fnv1a52: "npm:^1.0.0"
+  checksum: 10c0/910ef0134affa0b21e25905b3bb66f1d8e2436e2c228d355d939cace45dae478858506e7ce9a0d70f7effcbbb4485ae3cf056614eb8b85e2d11ed55667cf3baa
   languageName: node
   linkType: hard
 
@@ -3850,16 +3858,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:3.8.1":
-  version: 3.8.1
-  resolution: "prettier@npm:3.8.1"
-  bin:
-    prettier: bin/prettier.cjs
-  checksum: 10c0/33169b594009e48f570471271be7eac7cdcf88a209eed39ac3b8d6d78984039bfa9132f82b7e6ba3b06711f3bfe0222a62a1bfb87c43f50c25a83df1b78a2c42
-  languageName: node
-  linkType: hard
-
-"prettier@npm:^3.8.1":
+"prettier@npm:3.9.9, prettier@npm:^3.8.1":
   version: 3.9.9
   resolution: "prettier@npm:3.9.9"
   bin:
@@ -3920,30 +3919,30 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-dom@npm:^19.2.4":
-  version: 19.2.4
-  resolution: "react-dom@npm:19.2.4"
+"react-dom@npm:^19.3.0":
+  version: 19.3.0
+  resolution: "react-dom@npm:19.3.0"
   dependencies:
-    scheduler: "npm:^0.27.0"
+    scheduler: "npm:^0.28.0"
   peerDependencies:
-    react: ^19.2.4
-  checksum: 10c0/f0c63f1794dedb154136d4d0f59af00b41907f4859571c155940296808f4b94bf9c0c20633db75b5b2112ec13d8d7dd4f9bf57362ed48782f317b11d05a44f35
+    react: ^19.3.0
+  checksum: 10c0/c513044b724dd6bfe9500a9682d60973e7f8a48cffba00b6b16d3e910e27dcc459bf71bf0a5c33d7d62a3843ca30de1bd1e2098058aa4ed71f618a24b6061da5
   languageName: node
   linkType: hard
 
-"react-icons@npm:^5.5.0":
-  version: 5.5.0
-  resolution: "react-icons@npm:5.5.0"
+"react-icons@npm:^5.7.0":
+  version: 5.7.0
+  resolution: "react-icons@npm:5.7.0"
   peerDependencies:
     react: "*"
-  checksum: 10c0/a24309bfc993c19cbcbfc928157e53a137851822779977b9588f6dd41ffc4d11ebc98b447f4039b0d309a858f0a42980f6bfb4477fb19f9f2d1bc2e190fcf79c
+  checksum: 10c0/cc5ae92e61ef9d8fc83cb3f3ac2710deab9174c5831bdaf2a94b099acfc91074a60d4b3adfd3165dcb9b21799ca6c760b3f4f6596d75198c1ed2ea44240818c8
   languageName: node
   linkType: hard
 
-"react@npm:^19.2.4":
-  version: 19.2.4
-  resolution: "react@npm:19.2.4"
-  checksum: 10c0/cd2c9ff67a720799cc3b38a516009986f7fc4cb8d3e15716c6211cf098d1357ee3e348ab05ad0600042bbb0fd888530ba92e329198c92eafa0994f5213396596
+"react@npm:^19.3.0":
+  version: 19.3.0
+  resolution: "react@npm:19.3.0"
+  checksum: 10c0/dd3099c3c43a7122bc01223bb26b0f8d5ba13cca569af6fb94a005fb54fa73223c9cb203bb226d40cfd49a82cbeef2e36ce84062a3a6d5b9fe8f4437694c7b52
   languageName: node
   linkType: hard
 
@@ -4151,10 +4150,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"scheduler@npm:^0.27.0":
-  version: 0.27.0
-  resolution: "scheduler@npm:0.27.0"
-  checksum: 10c0/4f03048cb05a3c8fddc45813052251eca00688f413a3cee236d984a161da28db28ba71bd11e7a3dd02f7af84ab28d39fb311431d3b3772fed557945beb00c452
+"scheduler@npm:^0.28.0":
+  version: 0.28.0
+  resolution: "scheduler@npm:0.28.0"
+  checksum: 10c0/783c8e5ce89d41273a02ed6dc0e3d24bd60e05c9e8f7e3adfc6c82e7c69935500d90e343f1ee26d592fc7504e8a2532573c6368def3e93bfe812391fa53efaf4
   languageName: node
   linkType: hard
 
