@@ -2,13 +2,12 @@ import { defineConfig } from "astro/config";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import react from "@astrojs/react";
-
-import tailwind from "@astrojs/tailwind";
+import tailwindcss from "@tailwindcss/vite";
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://blog.jipai.moe",
-  integrations: [mdx(), sitemap(), react(), tailwind()],
+  integrations: [mdx(), sitemap(), react()],
   devToolbar: {
     enabled: false,
   },
@@ -44,6 +43,7 @@ export default defineConfig({
   },
 
   vite: {
+    plugins: [tailwindcss()],
     resolve: {
       preserveSymlinks: true,
     },

@@ -1,3 +1,39 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+/* Keep custom theme tokens from the previous Tailwind v3 config. */
+@theme {
+  --color-background-main: var(--background-main);
+  --color-primary-blue: var(--primary-blue);
+  --color-primary-blue-dark: var(--primary-blue-dark);
+  --color-primary-blue-light: var(--primary-blue-light);
+  --color-text-dark: var(--text-dark);
+  --color-text-dark-light: var(--text-dark-light);
+
+  --background-image-gradient-radial: radial-gradient(var(--tw-gradient-stops));
+  --background-image-gradient-conic: conic-gradient(
+    from 180deg at 50% 50%,
+    var(--tw-gradient-stops)
+  );
+}
+
+/* Preserve Tailwind v3 default border color. */
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+
+  /* Preserve Tailwind v3 button cursor. */
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
 :root {
   --gray: 96, 115, 159;
   --gray-light: 229, 233, 240;
@@ -53,4 +89,9 @@ body {
   to {
     left: 1rem;
   }
+}
+
+/* Inline code styles previously in Prose.astro via @apply. */
+:where(code):not(:where([class~="not-prose"], [class~="not-prose"] *) pre code) {
+  @apply bg-primary-blue-light rounded-sm p-1 mx-1 text-sm font-normal! text-slate-700!;
 }
